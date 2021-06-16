@@ -84,7 +84,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     width: 400,
                     child: FadeIn(
                       duration: Duration(milliseconds: 1500),
-                      delay: Duration(milliseconds: 500),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(16),
                         child: FittedBox(

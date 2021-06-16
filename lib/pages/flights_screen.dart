@@ -49,6 +49,20 @@ class _FlightsScreenState extends State<FlightsScreen> {
                     color: Theme.of(context).primaryColor,
                   ),
                 ),
+                FadeInLeft(
+                  delay: Duration(milliseconds: 1500),
+                  duration: Duration(milliseconds: 700),
+                  child: Image.asset(
+                    'assets/images/airo.png',
+                    scale: 2,
+                  ),
+                ),
+                Container(
+                  height: 300,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor.withOpacity(.7),
+                  ),
+                ),
                 Positioned(
                   right: 16,
                   left: 16,

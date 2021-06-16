@@ -196,14 +196,14 @@ class TicketCard extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
             ),
             SizedBox(
-              width: 80,
+              width: 70,
             ),
             SizedBox(
               height: 20,
               width: 20,
               child: SvgPicture.asset(
                 "assets/images/door.svg",
-                color: Colors.blueGrey,
+                color: Colors.blueGrey.shade200,
               ),
             ),
             SizedBox(
@@ -211,6 +211,24 @@ class TicketCard extends StatelessWidget {
             ),
             Text(
               seat.toString(),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+            ),
+              SizedBox(
+              width: 8,
+            ),
+            SizedBox(
+              height: 20,
+              width: 20,
+              child: SvgPicture.asset(
+                "assets/images/street.svg",
+                color: Colors.blueGrey.shade200,
+              ),
+            ),
+            SizedBox(
+              width: 4,
+            ),
+            Text(
+              "0",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
             ),
           ],

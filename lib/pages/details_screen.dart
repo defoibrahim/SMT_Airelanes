@@ -44,29 +44,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   right: 16,
                   left: 16,
                   top: 50,
-                  child: FadeInDown(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        InkWell(
-                          onTap: () => Navigator.pop(context),
-                          child: Icon(
-                            Icons.arrow_back_ios_outlined,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          '${widget.flight.cityFrom} to ${widget.flight.cityTo}',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(),
-                      ],
-                    ),
-                  ),
+                  child: buildAppBar(context),
                 ),
               ],
             ),
@@ -79,21 +57,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    height: 300,
-                    width: 400,
-                    child: FadeIn(
-                      duration: Duration(milliseconds: 1500),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: FittedBox(
-                          fit: BoxFit.cover,
-                          child: Image.network(
-                              "https://images.kiwi.com/photos/220x165/${widget.flight.route[0].mapIdto}.jpg"),
-                        ),
-                      ),
-                    ),
-                  ),
+                  _imageBuilder(widget: widget),
                   SizedBox(height: 16),
                   Text(
                     DateFormat('EEEE MMM,DD').format(
@@ -113,6 +77,60 @@ class _DetailsScreenState extends State<DetailsScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  FadeInDown buildAppBar(BuildContext context) {
+    return FadeInDown(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          InkWell(
+            onTap: () => Navigator.pop(context),
+            child: Icon(
+              Icons.arrow_back_ios_outlined,
+              color: Colors.white,
+            ),
+          ),
+          Text(
+            '${widget.flight.cityFrom} to ${widget.flight.cityTo}',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(),
+        ],
+      ),
+    );
+  }
+}
+
+class _imageBuilder extends StatelessWidget {
+  const _imageBuilder({
+    Key key,
+    @required this.widget,
+  }) : super(key: key);
+
+  final DetailsScreen widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 300,
+      width: 400,
+      child: FadeIn(
+        duration: Duration(milliseconds: 1500),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: FittedBox(
+            fit: BoxFit.cover,
+            child: Image.network(
+                "https://images.kiwi.com/photos/220x165/${widget.flight.route[0].mapIdto}.jpg"),
+          ),
+        ),
       ),
     );
   }

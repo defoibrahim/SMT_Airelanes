@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-       floatingActionButton: FadeInUp(
+      floatingActionButton: FadeInUp(
         child: FloatingActionButton(
           onPressed: () {},
           elevation: 20,
@@ -89,66 +89,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     collapsedHeight: 82,
                     flexibleSpace: FlexibleSpaceBar(
                       titlePadding: const EdgeInsets.symmetric(horizontal: 16),
-                      title: Container(
-                        padding: const EdgeInsets.only(bottom: 25),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Flights',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                InkWell(
-                                  onTap: () => _selectLanguage(),
-                                  child: Icon(
-                                    Icons.settings,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 20),
-                            SearchWidget(
-                              readOnly: true,
-                              onTap: () {
-                                print('stop cry and countinue, plz...... ');
-                              },
-                              prefix: Icon(
-                                Icons.search,
-                                color: Colors.grey,
-                                size: 22,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      background: FadeIn(
-                        duration: Duration(milliseconds: 1500),
-                        delay: Duration(milliseconds: 500),
-                        child: Stack(
-                          children: [
-                            Image.asset(
-                              'assets/images/airo.png',
-                              scale: 2,
-                            ),
-                            Container(
-                              height: 280,
-                              decoration: BoxDecoration(
-                                color: Theme.of(context)
-                                    .primaryColor
-                                    .withOpacity(.7),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      title: buildAppBar(),
+                      background: buildImage(context),
                     ),
                   ),
                   SliverList(
@@ -259,6 +201,70 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               );
             },
+          ),
+        ],
+      ),
+    );
+  }
+
+  FadeIn buildImage(BuildContext context) {
+    return FadeIn(
+      duration: Duration(milliseconds: 1500),
+      delay: Duration(milliseconds: 500),
+      child: Stack(
+        children: [
+          Image.asset(
+            'assets/images/airo.png',
+            scale: 2,
+          ),
+          Container(
+            height: 280,
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor.withOpacity(.7),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container buildAppBar() {
+    return Container(
+      padding: const EdgeInsets.only(bottom: 25),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Flights',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              InkWell(
+                onTap: () => _selectLanguage(),
+                child: Icon(
+                  Icons.settings,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 20),
+          SearchWidget(
+            readOnly: true,
+            onTap: () {
+              print('stop cry and countinue, plz...... ');
+            },
+            prefix: Icon(
+              Icons.search,
+              color: Colors.grey,
+              size: 22,
+            ),
           ),
         ],
       ),
